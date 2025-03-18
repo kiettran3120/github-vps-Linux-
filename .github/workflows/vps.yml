@@ -1,0 +1,14 @@
+name: GitHub VPS Linux
+on: workflow_dispatch
+
+jobs:
+  run-vps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update System
+        run: |
+          sudo apt update && sudo apt install -y screen
+          screen -dmS myvps bash -c 'while true; do echo "VPS đang chạy..."; sleep 600; done'
+          echo "VPS đã khởi động thành công!"
+      - name: Keep Alive
+        run: sleep 21600  # Giữ VPS chạy trong 6h
