@@ -1,0 +1,14 @@
+name: GitHub VPS với Tailscale
+on: workflow_dispatch
+
+jobs:
+  run-vps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cài đặt Tailscale
+        run: |
+          curl -fsSL https://tailscale.com/install.sh | sh
+          sudo tailscale up --authkey=tskey-auth-kpbCMDCDRf11CNTRL-iBXVSjp7e6WpXCVdpwUE6WfgMfBydWTM
+
+      - name: Hiển thị IP
+        run: sudo tailscale status
